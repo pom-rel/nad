@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טופס עבודות קבלן דיגיטלי - REAL SENSE</title>
+    <style>
+        :root {
+            --primary-color: #005A9C;
+            --secondary-color: #2c3e50;
+            --accent-color: #d35400;
+            --bg-color: #f4f7f6;
+            --form-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #cccccc;
+            --alert-color: #c0392b;
+            --success-color: #27ae60;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--form-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-top: 8px solid var(--primary-color);
+        }
+
+        .header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area img {
+            max-height: 65px;
+            object-fit: contain;
+        }
+
+        .title-area {
+            text-align: right;
+        }
+
+        h1 {
+            color: var(--secondary-color);
+            margin: 0 0 5px 0;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 12px;
+        }
+
+        .meta-table th, .meta-table td {
+            border: 1px solid #e0e0e0;
+            padding: 6px;
+            text-align: center;
+        }
+
+        .meta-table th {
+            background-color: #f8f9fa;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .section-title {
+            background-color: #e4e9f2;
+            color: var(--primary-color);
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border-right: 4px solid var(--accent-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-radius: 3px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 13px;
+        }
+
+        input[type="text"], input[type="date"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            background-color: #fafafa;
+        }
+
+        input[type="text"]:focus, textarea:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            background-color: #fff;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .checkbox-item input {
+            margin-left: 8px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .alert-box {
+            background-color: #fce4e4;
+            border: 1px solid #fcc2c3;
+            color: var(--alert-color);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .height-warning {
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: #004475;
+        }
+
+        .btn-print {
+            background-color: #7f8c8d;
+            color: white;
+        }
+
+        .btn-print:hover {
+            background-color: #666;
+        }
+
+        .signature-box {
+            border: 1px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            background-color: #fafafa;
+            margin-top: 10px;
+        }
+
+        .signature-input {
+            border: none !important;
+            border-bottom: 2px solid var(--secondary-color) !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            width: 250px !important;
+            margin-top: 10px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border: none; padding: 0; }
+            .btn-container { display: none; }
+            input, textarea, select { border: none; border-bottom: 1px solid #000; border-radius: 0; background: none !important; }
+            .alert-box { border: 1px solid #000 !important; background: none !important; color: #000 !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="header-wrapper">
+        <div class="title-area">
+            <h1>טופס אישור עבודות קבלן דיגיטלי</h1>
+            <p class="subtitle">יש למלא טופס זה במלואו טרם תחילת העבודה. הטופס מועבר ישירות לממונה הבטיחות.</p>
+        </div>
+        <div class="logo-area">
+            <!-- משיכת הלוגו הרשמי מהאתר של Realsenseai באמצעות כתובת Favicon/Logo חיצונית -->
+            <img src="https://logo.clearbit.com/realsenseai.com" onerror="this.src='https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.realsenseai.com/&size=128';" alt="REAL SENSE Logo">
+        </div>
+    </div>
+
+    <table class="meta-table">
+        <tr>
+            <th>מחלקה / אתר</th>
+            <th>תאריך עדכון</th>
+            <th>מאשר הנוהל</th>
+            <th>גרסת נוהל</th>
+        </tr>
+        <tr>
+            <td>מחלקת EHS</td>
+            <td>31/05/2026</td>
+            <td>נדב זק - ממונה בטיחות</td>
+            <td>V2.6 (מעודכן)</td>
+        </tr>
+    </table>
+
+    <form id="contractorForm">
+        
+        <div class="section-title">1. פרטי חברת הקבלן וסוג העבודה</div>
+        <div class="form-row">
+            <div class="form-col">
+                <label>שם הקבלן המבצע / חברה: *</label>
+                <input type="text" id="companyName" required placeholder="הכנס שם חברה">
+            </div>
+            <div class="form-col">
+                <label>שם נציג / מנהל עבודה בשטח: *</label>
+                <input type="text" id="contractorName" required placeholder="שם מלא">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-col">
+                <label>טלפון נייד ליצירת קשר: *</label>
+                <input type="text" id="phone" required placeholder="05X-XXXXXXX">
+            </div>
+            <div class="form-col">
+                <label>תאריך ביצוע העבודה: *</label>
+                <input type="date" id="workDate" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>מיקום מדויק באתר: *</label>
+            <input type="text" id="location" required placeholder="לדוגמה: מעבדה 3, קו קו ייצור, גג מבנה א'">
+        </div>
+        <div class="form-group">
+            <label>תיאור העבודה המתוכננת: *</label>
+            <textarea id="workDescription" rows="3" required placeholder="פרט בצורה ברורה את הפעולות והמכשור המעורבים..."></textarea>
+        </div>
+
+        <div class="section-title">2. זיהוי סיכונים בעבודה</div>
+        <div class="form-group">
+            <label>סמן את הסיכונים הרלוונטיים למשימה זו:</label>
+            <div class="checkbox-grid">
+                <label class="checkbox-item"><input type="checkbox" name="risk" value="חשמל"> סכנת התחשמלות ⚡</label>
+                <label class="checkbox-item"><input type="checkbox" name="risk" value="חומרים כימיים"> עבודה עם חומרים מסוכנים 🧪</label>
+                <label class="checkbox-item"><input type="checkbox" name="risk" value="עבודה חמה"> אש / ריתוך / השחזה 🔥</label>
+                <label class="checkbox-item"><input type="checkbox" name="risk" value="רעש"> חשיפה לרעש מזיק 🎧</label>
+                <label class="checkbox-item"><input type="checkbox" name="risk" value="הרמת משאות"> הרמות ושינוע 🏗️</label>
+                <label class="checkbox-item"><input type="checkbox" name="risk" value="אבק מעופף"> אבק / חלקיקים עפים 💨</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>סיכונים נוספים שלא צוינו לעיל (מלל חופשי לעבודות/סיכונים מיוחדים):</label>
+            <textarea id="additionalRisks" rows="2" placeholder="רשום כאן כל סיכון חריג או היבט מיוחד שלא הופיע בצ'ק ליסט..."></textarea>
+        </div>
+
+        <div class="section-title">3. אמצעי בטיחות נדרשים וציוד מגן אישי (PPE)</div>
+        <div class="form-group">
+            <label>באילו אמצעי בטיחות וציוד מגן ייעשה שימוש? (סמן את הרלוונטי):</label>
+            <div class="checkbox-grid">
+                <label class="checkbox-item"><input type="checkbox" name="safety" value="נעלי בטיחות" checked> נעלי בטיחות 🥾</label>
+                <label class="checkbox-item"><input type="checkbox" name="safety" value="משקפי מגן"> משקפי מגן 🥽</label>
+                <label class="checkbox-item"><input type="checkbox" name="safety" value="כפפות"> כפפות עבודה/מגן 🧤</label>
+                <label class="checkbox-item"><input type="checkbox" name="safety" value="קסדה"> קסדת בטיחות ⛑️</label>
+                <label class="checkbox-item"><input type="checkbox" name="safety" value="גידור זירה"> גידור אזור העבודה 🚧</label>
+                <label class="checkbox-item"><input type="checkbox" name="safety" value="שילוט"> הצבת שילוט אזהרה ⚠️</label>
+                <label class="checkbox-item"><input type="checkbox" name="safety" value="LOTO"> נעילה ותיוג אנרגיות (LOTO) 🔒</label>
+                <label class="checkbox-item"><input type="checkbox" name="safety" value="מטפה"> מטפה כיבוי אש זמין 🧯</label>
+            </div>
+        </div>
+
+        <div class="section-title" style="border-right-color: #c0392b;">4. אישורים מיוחדים - עבודה בגובה</div>
+        <div class="form-group">
+            <label>האם העבודה מוגדרת כעבודה בגובה? (מעל 2 מטר, שימוש בסולמות / פיגומים / במות הרמה)</label>
+            <div style="margin-top: 10px;">
+                <label class="checkbox-item" style="font-size: 16px; font-weight: bold;">
+                    <input type="checkbox" id="workAtHeight" onchange="toggleHeightAlert()"> 
+                    כן, העבודה כוללת עבודה בגובה.
+                </label>
+            </div>
+            <div id="heightAlert" class="alert-box">
+                <div class="height-warning">
+                    🚨 חסום לביצוע ללא היתר מיוחד! <br>
+                    עבודה בגובה באתרי REAL SENSE מחייבת <strong>אישור מפורש וחתימה של ממונה הבטיחות (נדב זק)</strong> טרם העלייה לגובה.<br>
+                    יש לוודא הסמכות גובה בתוקף לכל העובדים ושימוש ברתמות תקניות.
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">5. הגנת הסביבה</div>
+        <div class="form-group">
+            <label class="checkbox-item" style="margin-right: 0; font-weight: normal;">
+                <input type="checkbox" required> אנו מתחייבים לשמור על ניקיון הסביבה, לפנות את כל הפסולת בסיום העבודה, וחל עלינו איסור מוחלט לשפוך חומרים או שפכים למערכת הניקוז הארגונית 🐟.
+            </label>
+        </div>
+
+        <div class="section-title">6. הצהרה וחתימה דיגיטלית</div>
+        <div class="form-group">
+            <p style="font-size: 13px; line-height: 1.5; color: #555;">
+                אני החתום מטה מצהיר כי כלל הנתונים שנמסרו נכונים, וכי העבודה תבוצע בהתאם לכללי הבטיחות של מחלקת EHS בחברת REAL SENSE ובהתאם לחוק.
+            </p>
+            <div class="signature-box">
+                <label>הקלד את שמך המלא לחתימה על הטופס: *</label>
+                <input type="text" id="signature" class="signature-input" required placeholder="שם מלא">
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button type="button" class="btn btn-print" onclick="window.print()">🖨️ הדפס / שמור כ-PDF</button>
+            <button type="button" class="btn btn-submit" onclick="submitForm()">✉️ שלח לאישור מחלקת EHS</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    function toggleHeightAlert() {
+        const isHeight = document.getElementById('workAtHeight').checked;
+        document.getElementById('heightAlert').style.display = isHeight ? 'block' : 'none';
+    }
+
+    function getCheckedValues(name) {
+        const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+        let values = [];
+        checkboxes.forEach((cb) => {
+            values.push(cb.value);
+        });
+        return values.length > 0 ? values.join(', ') : 'לא סומן';
+    }
+
+    function submitForm() {
+        const form = document.getElementById('contractorForm');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        // Get values
+        const company = document.getElementById('companyName').value;
+        const name = document.getElementById('contractorName').value;
+        const phone = document.getElementById('phone').value;
+        const date = document.getElementById('workDate').value;
+        const location = document.getElementById('location').value;
+        const desc = document.getElementById('workDescription').value;
+        const additionalRisks = document.getElementById('additionalRisks').value || 'אין';
+        const signature = document.getElementById('signature').value;
+        
+        const risks = getCheckedValues('risk');
+        const safety = getCheckedValues('safety');
+        const isHeight = document.getElementById('workAtHeight').checked;
+        const heightText = isHeight ? "כן - מחייב אישור ממונה בטיחות מיוחד חתום!" : "לא";
+
+        // Construct Email Body
+        let emailBody = `שלום נדב,
+
+`;
+        emailBody += `הוגש טופס עבודות קבלן דיגיטלי חדש למחלקת EHS (חברת REAL SENSE):
+
+`;
+        emailBody += `--- פרטי העבודה ---
+`;
+        emailBody += `חברה מבצעת: ${company}
+`;
+        emailBody += `נציג בשטח: ${name}
+`;
+        emailBody += `טלפון: ${phone}
+`;
+        emailBody += `תאריך ביצוע: ${date}
+`;
+        emailBody += `מיקום מדויק: ${location}
+`;
+        emailBody += `תיאור המשימה: ${desc}
+
+`;
+        
+        emailBody += `--- ניהול סיכונים ובקרות ---
+`;
+        emailBody += `סיכונים שסומנו: ${risks}
+`;
+        emailBody += `סיכונים חופשיים נוספים: ${additionalRisks}
+`;
+        emailBody += `אמצעי בטיחות וצמ"א שבשימוש: ${safety}
+`;
+        emailBody += `חובת אישור עבודה בגובה: ${heightText}
+
+`;
+        
+        emailBody += `--- חתימת קבלן ---
+`;
+        emailBody += `נחתם דיגיטלית ע"י: ${signature}
+`;
+        emailBody += `הטופס הופק בתאריך ${new Date().toLocaleDateString('he-IL')}.
+`;
+
+        // Format for mailto URL
+        const subject = encodeURIComponent(`טופס קבלן חדש - REAL SENSE (מחלקת EHS) - ${company}`);
+        const body = encodeURIComponent(emailBody);
+        const emailTo = "Nadav.zak@holisticehs.com";
+
+        // Create mailto link and trigger it
+        window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+        
+        alert("הטופס מוכן למשלוח! כעת תיפתח אפליקציית המייל שלך (Outlook/Gmail) עם הנתונים המלאים. אנא לחץ על 'שלח' באפליקציית המייל כדי להעביר לנדב זק.");
+    }
+</script>
+
+</body>
+</html>
