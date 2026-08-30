@@ -8,7 +8,7 @@
         :root {
             --primary-gold: #d4af37;
             --accent-glow: rgba(212, 175, 55, 0.4);
-            --glass-bg: rgba(15, 23, 42, 0.45);
+            --glass-bg: rgba(15, 23, 42, 0.55);
             --glass-border: rgba(255, 255, 255, 0.25);
             --text-light: #ffffff;
             --text-sub: #e2e8f0;
@@ -29,10 +29,33 @@
             align-items: center;
             padding: 20px;
             color: var(--text-light);
-            background: linear-gradient(rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.6)),
-                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
-            transition: background 0.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            transition: background-image 0.4s ease-in-out;
             overflow-x: hidden;
+        }
+
+        /* הגדרת רקעים יציבים ומהירים */
+        body.bg-thailand {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
+                url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');
+        }
+
+        body.bg-kinneret {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
+                url('https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=1920');
+        }
+
+        body.bg-university {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
+                url('https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1920');
+        }
+
+        body.bg-sunset {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
+                url('https://images.pexels.com/photos/158163/asphalt-countryside-road-ffm-158163.jpeg?auto=compress&cs=tinysrgb&w=1920');
         }
 
         /* מחליף רקעים */
@@ -46,22 +69,23 @@
         }
 
         .bg-btn {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15, 23, 42, 0.7);
             border: 1px solid var(--glass-border);
             color: var(--text-light);
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 20px;
             cursor: pointer;
             backdrop-filter: blur(8px);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            user-select: none;
         }
 
         .bg-btn:hover, .bg-btn.active {
             background: var(--primary-gold);
             color: #000;
             font-weight: bold;
-            box-shadow: 0 0 12px var(--accent-glow);
+            box-shadow: 0 0 14px var(--accent-glow);
         }
 
         .container {
@@ -74,7 +98,7 @@
             max-width: 750px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             z-index: 10;
         }
 
@@ -102,7 +126,7 @@
         }
 
         .time-box {
-            background: rgba(15, 23, 42, 0.4);
+            background: rgba(15, 23, 42, 0.5);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
             padding: 15px 5px;
@@ -133,7 +157,7 @@
         }
 
         .stat-card {
-            background: rgba(15, 23, 42, 0.3);
+            background: rgba(15, 23, 42, 0.4);
             border: 1px solid var(--glass-border);
             border-radius: 14px;
             padding: 12px 10px;
@@ -185,7 +209,7 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
         }
 
-        /* אנימציית קונפטי עצמאית */
+        /* אנימציית קונפטי */
         .confetti-piece {
             position: fixed;
             width: 10px;
@@ -211,13 +235,13 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-thailand">
 
     <div class="bg-selector">
-        <button class="bg-btn active" onclick="changeBg('thailand', this)">תאילנד 🏝️</button>
-        <button class="bg-btn" onclick="changeBg('kinneret', this)">הכנרת 🌊</button>
-        <button class="bg-btn" onclick="changeBg('university', this)">אוניברסיטה 🎓</button>
-        <button class="bg-btn" onclick="changeBg('sunset', this)">שקיעה 🌅</button>
+        <button class="bg-btn active" onclick="changeBg('bg-thailand', this)">תאילנד 🏝️</button>
+        <button class="bg-btn" onclick="changeBg('bg-kinneret', this)">הכנרת 🌊</button>
+        <button class="bg-btn" onclick="changeBg('bg-university', this)">אוניברסיטה 🎓</button>
+        <button class="bg-btn" onclick="changeBg('bg-sunset', this)">שקיעה 🌅</button>
     </div>
 
     <div class="container">
@@ -263,8 +287,33 @@
         const targetDate = new Date(2026, 9, 8, 8, 0, 0);
 
         const quotes = [
-            "פז יאלופה, עוד לא נולד המניאק שיעצור את הזמן 💪✨",
-            "פז, את מהממת היום! קפה של בוקר טעים יותר כשהפז''ם דופק ☕😎",
+
+            // ציטוטים מורחבים מתוך שירים מוכרים
+    "\"עוד מעט כמעט, אנו גוף אחד... ימי הענן כבר חולפים, תראי כמעט עננים שחורים\" 🎵 (החברים של נטאשה)",
+    "\"שינוי גדול מתחיל בצעד קטן, וכל הדרך כולה מחכה רק לך שתקפצי למים\" 🎵 (חנן בן ארי)",
+    "\"תמיד הכי חשוך לפני השחר, תזכרי שהאור תמיד מגיע בסוף הלילה\" 🎵 (שלום חנוך)",
+    "\"תמשיך ללכת, תמשיך לחלום, אל תעצור גם כשהדרך נראית ארוכה ומפותלת\" 🎵 (שמעון בוסקילה)",
+    "\"עוד יבואו ימים טובים יותר, השמש עוד תזרח עלינו והכל יהיה פשוט ורגוע\" 🎵 (אריק איינשטיין)",
+    "\"בסוף הכל עובר, גם המורד הכי תלוי הופך למישור יפה וירוק\" 🎵 (טונה)",
+    "\"קחי אוויר, הים קרוב והבריזה כבר מתחילה לנשוב לכיוונך\" 🎵 (מוש בן ארי)",
+    "\"תאמין שאתה יכול, ואתה כבר בחצי הדרך אל היעד שחלמת עליו\" 🎵 (שלמה ארצי)",
+    "\"יום חדש מתחיל, מלא באפשרויות חדשות ובזמזום של חופש באופק\" 🎵 (אליעד נחום)",
+    "\"כל מה שצריך זה קצת אמונה ושמחה בלב, והזמן כבר יעשה את שלו\" 🎵 (עידן רייכל)",
+
+    // משפטי מוטיבציה מורחבים ופז''ם
+    "פז יאלופה, עוד לא נולד המניאק שיעצור את הזמן – כל שנייה שעוברת מקרבת אותך לסוף! 💪✨",
+    "פז, את מהממת היום! קפה של בוקר טעים הרבה יותר כשהימים הולכים ואוזלים ☕😎",
+    "פז, תביטי קדימה: השקט, הכנרת והרוגע של אחרי כבר ממש מעבר לפינה 🌊🌴",
+    "את תותחית על! כל המשימות והעומס של היום יהפכו ממש בקרוב לזיכרון רחוק 🚀",
+    "פז, תזכרי שכל יום שעובר הוא יום שלא יחזור לעולם – הפז''ם עובד בשבילך ⏳",
+    "פז, מי שמביט בך מהצד רואה כמה כוח יש בך בדרך לכבוש את היעד הבא בלימודים! 🎓",
+    "פז, תאילנד כבר מחכה לך עם חוף זהוב, ערסל מול השקיעה ושייק טרופי מפנק 🥥🍹",
+    "השעון ממשיך לתקתק בדיוק בקצב הנכון, ואת רק צריכה לנשום עמוק ולחייך 😉",
+    "קחי אוויר לנשמה – השלווה והחופש מגיעים, וכבר לגמרי הרווחת אותם ביושר 💆‍♀️",
+    "אין שום כוח בעולם שיכול להאיט את ההגעה של ה-08/10, הסוף כבר בטוח! 🚀"
+
+            
+    
             "עוד לא נולד המניאק שיעצור את הזמן 💪✨",
             "פז, רואים את השקט והכנרת באופק... עוד קצת! 🌊🌴",
             "את תותחית על, והיום הזה הולך לעבור במהירות שיא 🚀",
@@ -290,15 +339,8 @@
             "רואים את השקט והכנרת באופק... עוד ממש קצת! 🌊🌴"
         ];
 
-        const bgImages = {
-            thailand: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80',
-            kinneret: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80',
-            university: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80',
-            sunset: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1920&q=80'
-        };
-
-        function changeBg(type, btnElement) {
-            document.body.style.backgroundImage = `linear-gradient(rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.6)), url('${bgImages[type]}')`;
+        function changeBg(bgClass, btnElement) {
+            document.body.className = bgClass;
             document.querySelectorAll('.bg-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
         }
@@ -310,7 +352,7 @@
 
         function createConfetti() {
             const colors = ['#d4af37', '#f39c12', '#ffffff', '#e74c3c', '#3498db'];
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 40; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti-piece';
                 confetti.style.left = Math.random() * 100 + 'vw';
