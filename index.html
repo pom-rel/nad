@@ -8,7 +8,7 @@
         :root {
             --primary-gold: #d4af37;
             --accent-glow: rgba(212, 175, 55, 0.4);
-            --glass-bg: rgba(15, 23, 42, 0.55);
+            --glass-bg: rgba(255, 255, 255, 0.12);
             --glass-border: rgba(255, 255, 255, 0.25);
             --text-light: #ffffff;
             --text-sub: #e2e8f0;
@@ -24,68 +24,12 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
             color: var(--text-light);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            transition: background-image 0.4s ease-in-out;
-            overflow-x: hidden;
-        }
-
-        /* הגדרת רקעים יציבים ומהירים */
-        body.bg-thailand {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
-                url('https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1920');
-        }
-
-        body.bg-kinneret {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
-                url('https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=1920');
-        }
-
-        body.bg-university {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
-                url('https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1920');
-        }
-
-        body.bg-sunset {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
-                url('https://images.pexels.com/photos/158163/asphalt-countryside-road-ffm-158163.jpeg?auto=compress&cs=tinysrgb&w=1920');
-        }
-
-        /* מחליף רקעים */
-        .bg-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .bg-btn {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid var(--glass-border);
-            color: var(--text-light);
-            padding: 10px 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            user-select: none;
-        }
-
-        .bg-btn:hover, .bg-btn.active {
-            background: var(--primary-gold);
-            color: #000;
-            font-weight: bold;
-            box-shadow: 0 0 14px var(--accent-glow);
+            background: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.55)),
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
         }
 
         .container {
@@ -98,8 +42,7 @@
             max-width: 750px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
 
         h1 {
@@ -118,6 +61,7 @@
             text-shadow: 0 0 12px var(--accent-glow);
         }
 
+        /* גריד ספירה לאחור (הפוך - מימין לשמאל: שניות -> דקות -> שעות -> ימים) */
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -126,7 +70,7 @@
         }
 
         .time-box {
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(15, 23, 42, 0.4);
             border: 1px solid var(--glass-border);
             border-radius: 16px;
             padding: 15px 5px;
@@ -149,6 +93,7 @@
             margin-top: 5px;
         }
 
+        /* נתוני ימי עבודה וסופי שבוע */
         .extra-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -157,7 +102,7 @@
         }
 
         .stat-card {
-            background: rgba(15, 23, 42, 0.4);
+            background: rgba(15, 23, 42, 0.3);
             border: 1px solid var(--glass-border);
             border-radius: 14px;
             padding: 12px 10px;
@@ -175,6 +120,7 @@
             margin-top: 2px;
         }
 
+        /* משפט מוטיבציה רנדומלי */
         .quote-box {
             background: rgba(212, 175, 55, 0.15);
             border: 1px solid rgba(212, 175, 55, 0.4);
@@ -188,43 +134,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .boost-btn {
-            background: linear-gradient(135deg, #d4af37, #f39c12);
-            border: none;
-            color: #000;
-            font-weight: 800;
-            font-size: 1.05rem;
-            padding: 12px 28px;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-            transition: all 0.2s ease;
-        }
-
-        .boost-btn:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
-        }
-
-        /* אנימציית קונפטי */
-        .confetti-piece {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            top: -10px;
-            z-index: 999;
-            pointer-events: none;
-            animation: fall 3s linear forwards;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(105vh) rotate(720deg);
-                opacity: 0;
-            }
         }
 
         @media (max-width: 500px) {
@@ -235,14 +144,7 @@
         }
     </style>
 </head>
-<body class="bg-thailand">
-
-    <div class="bg-selector">
-        <button class="bg-btn active" onclick="changeBg('bg-thailand', this)">תאילנד 🏝️</button>
-        <button class="bg-btn" onclick="changeBg('bg-kinneret', this)">הכנרת 🌊</button>
-        <button class="bg-btn" onclick="changeBg('bg-university', this)">אוניברסיטה 🎓</button>
-        <button class="bg-btn" onclick="changeBg('bg-sunset', this)">שקיעה 🌅</button>
-    </div>
+<body>
 
     <div class="container">
         <h1>ספירה לאחור לסיום התפקיד 🕊️</h1>
@@ -278,17 +180,16 @@
             </div>
         </div>
 
-        <div class="quote-box" id="quoteBox"></div>
-
-        <button class="boost-btn" onclick="triggerBoost()">צריכה חיזוק? 🚀</button>
+        <div class="quote-box" id="quoteBox">
+            <!-- מולא דינמית -->
+        </div>
     </div>
 
     <script>
-        const targetDate = new Date(2026, 9, 8, 8, 0, 0);
+        const targetDate = new Date(2026, 9, 8, 8, 0, 0); // 8 באוקטובר 2026
 
-        const quotes = [
-
-            // ציטוטים מורחבים מתוך שירים מוכרים
+       const quotes = [
+    // ציטוטים מורחבים מתוך שירים מוכרים
     "\"עוד מעט כמעט, אנו גוף אחד... ימי הענן כבר חולפים, תראי כמעט עננים שחורים\" 🎵 (החברים של נטאשה)",
     "\"שינוי גדול מתחיל בצעד קטן, וכל הדרך כולה מחכה רק לך שתקפצי למים\" 🎵 (חנן בן ארי)",
     "\"תמיד הכי חשוך לפני השחר, תזכרי שהאור תמיד מגיע בסוף הלילה\" 🎵 (שלום חנוך)",
@@ -311,61 +212,34 @@
     "השעון ממשיך לתקתק בדיוק בקצב הנכון, ואת רק צריכה לנשום עמוק ולחייך 😉",
     "קחי אוויר לנשמה – השלווה והחופש מגיעים, וכבר לגמרי הרווחת אותם ביושר 💆‍♀️",
     "אין שום כוח בעולם שיכול להאיט את ההגעה של ה-08/10, הסוף כבר בטוח! 🚀"
-
-            
-    
-            "עוד לא נולד המניאק שיעצור את הזמן 💪✨",
-            "פז, רואים את השקט והכנרת באופק... עוד קצת! 🌊🌴",
-            "את תותחית על, והיום הזה הולך לעבור במהירות שיא 🚀",
-            "פז, סבלנות היא האיכות שבה נשארים רגועים כשהזמן מטפטף 🧘‍♀️",
-            "פז, את אלופה אמיתית! כל שנייה שעוברת זו שנייה שלא תצטרכי לעשות שוב ⏳",
-            "מה שבא בקלות בא בקלות, מה שבא בסבלנות שווה את זה 🏝️",
-            "פז, מי שמביט בך מאחור לא יודע מי את... אבל יודע שאת בדרך ללימודים! 🎓",
-            "פז, חיוך אחד ביום שומר על הייאוש במרחק בטוח 😉",
-            "רק להזכיר לך שאת מדהימה, והסוף כבר ממש מעבר לפינה 🌟",
-            "פז, תאילנד כבר מחכה לך עם ערסל ושייק מפנק 🥥🍹",
-            "תזכרי שגם השבוע הכי ארוך נגמר בסוף בסוף שבוע ☕",
-            "פז יאלופה, הפז''ם שלך לא רק דופק – הוא עובד שעות נוספות! 🔨",
-            "פז, קחי אוויר, הנוף של הכנרת תיכף מול העיניים 🌊✨",
-            "קפה של בוקר טעים יותר כשהסוף כבר באופק ☕😎",
-            "פז, את כוכבת! את הרבה יותר קרובה לסוף ממה שהיית אתמול 👣",
-            "עוד קצת וכל המשימות האלו יהיו רק זיכרון רחוק 📝",
-            "פז, תעשי לציפור של החופש מקום לנחות 🕊️",
-            "אין כוח בעולם שיכול להאט את ה-08/10 🚀",
-            "פז, את שוברת שיאים היום! עוד כמה ימי עבודה נטו וזה מאחורייך 💼✨",
-            "השלווה והשקט מגיעים, וכבר לגמרי הרווחת אותם 💆‍♀️",
-            "פז, שתדעי שאת פשוט אלופה – תספגי את הרגע, היום הזה תיכף היסטוריה! ⏳",
-            "פז, את מהממת! השעון מתקדם בקצב שלו ואת רק צריכה לחייך 😉",
-            "רואים את השקט והכנרת באופק... עוד ממש קצת! 🌊🌴"
-        ];
-
-        function changeBg(bgClass, btnElement) {
-            document.body.className = bgClass;
-            document.querySelectorAll('.bg-btn').forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-        }
+    "עוד לא נולד המניאק שיעצור את הזמן 💪✨",
+    "פז, רואים את השקט והכנרת באופק... עוד קצת! 🌊🌴",
+    "את תותחית על, והיום הזה הולך לעבור במהירות שיא 🚀",
+    "פז, סבלנות היא האיכות שבה נשארים רגועים כשהזמן מטפטף 🧘‍♀️",
+    "פז, את אלופה אמיתית! כל שנייה שעוברת זו שנייה שלא תצטרכי לעשות שוב ⏳",
+    "מה שבא בקלות בא בקלות, מה שבא בסבלנות שווה את זה 🏝️",
+    "פז, מי שמביט בך מאחור לא יודע מי את... אבל יודע שאת בדרך ללימודים! 🎓",
+    "פז, חיוך אחד ביום שומר על הייאוש במרחק בטוח 😉",
+    "רק להזכיר לך שאת מדהימה, והסוף כבר ממש מעבר לפינה 🌟",
+    "פז, תאילנד כבר מחכה לך עם ערסל ושייק מפנק 🥥🍹",
+    "תזכרי שגם השבוע הכי ארוך נגמר בסוף בסוף שבוע ☕",
+    "פז יאלופה, הפז''ם שלך לא רק דופק – הוא עובד שעות נוספות! 🔨",
+    "פז, קחי אוויר, הנוף של הכנרת תיכף מול העיניים 🌊✨",
+    "קפה של בוקר טעים יותר כשהסוף כבר באופק ☕😎",
+    "פז, את כוכבת! את הרבה יותר קרובה לסוף ממה שהיית אתמול 👣",
+    "עוד קצת וכל המשימות האלו יהיו רק זיכרון רחוק 📝",
+    "פז, תעשי לציפור של החופש מקום לנחות 🕊️",
+    "אין כוח בעולם שיכול להאט את ה-08/10 🚀",
+    "פז, את שוברת שיאים היום! עוד כמה ימי עבודה נטו וזה מאחורייך 💼✨",
+    "השלווה והשקט מגיעים, וכבר לגמרי הרווחת אותם 💆‍♀️",
+    "פז, שתדעי שאת פשוט אלופה – תספגי את הרגע, היום הזה תיכף היסטוריה! ⏳",
+    "פז, את מהממת! השעון מתקדם בקצב שלו ואת רק צריכה לחייך 😉",
+    "רואים את השקט והכנרת באופק... עוד ממש קצת! 🌊🌴"
+];
 
         function setRandomQuote() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
             document.getElementById('quoteBox').textContent = quotes[randomIndex];
-        }
-
-        function createConfetti() {
-            const colors = ['#d4af37', '#f39c12', '#ffffff', '#e74c3c', '#3498db'];
-            for (let i = 0; i < 40; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti-piece';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3500);
-            }
-        }
-
-        function triggerBoost() {
-            setRandomQuote();
-            createConfetti();
         }
 
         function getWorkingDays(startDate, endDate) {
@@ -377,7 +251,7 @@
 
             while (curDate < target) {
                 const dayOfWeek = curDate.getDay();
-                if (dayOfWeek !== 5 && dayOfWeek !== 6) {
+                if (dayOfWeek !== 5 && dayOfWeek !== 6) { // 5 = שישי, 6 = שבת
                     count++;
                 }
                 curDate.setDate(curDate.getDate() + 1);
@@ -393,7 +267,7 @@
             target.setHours(0,0,0,0);
 
             while (curDate <= target) {
-                if (curDate.getDay() === 6) {
+                if (curDate.getDay() === 6) { // שבת
                     count++;
                 }
                 curDate.setDate(curDate.getDate() + 1);
@@ -418,6 +292,7 @@
             const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
+            // ימים שנותרו ללא אפס מוביל
             document.getElementById('days').textContent = String(days);
             document.getElementById('hours').textContent = String(hours).padStart(2, '0');
             document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
